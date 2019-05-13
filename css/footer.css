@@ -1,0 +1,20 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: 0;
+}
+
+/*------------------------------
+----pour le footer------
+-------------------------------*/
+#footer {
+  background-color: darkslategray;
+  font-family: 'Roboto Condensed', sans-serif;
+  border-block-start: solid 5px #47474773;
+}
+
+#footer a {
+  color: white;
+
+}
+

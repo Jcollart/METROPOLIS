@@ -1,0 +1,32 @@
+body {
+	background-image:url(img/ab1.jpg);
+	color:black;
+	
+}
+label {
+	display: inline-block;
+	width: 100px
+}
+a {
+	color: rgb(207, 39, 39);
+}
+form {
+	margin: 10px;
+	padding: 10px;
+	border: 1px solid rgb(219, 20, 20);
+	box-shadow: #000 3px 3px 30px;
+	border-radius: 6px
+}
+#admin {
+	position: absolute;
+	right: 0;
+	margin: 10px
+}
+.error {
+	background-color: #FFB7AE;
+	color: #F00;
+	border: #F00;
+	border-radius: 6px;
+	padding: 6px;
+	margin-bottom: 10px
+}
