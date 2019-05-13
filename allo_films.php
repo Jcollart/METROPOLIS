@@ -71,20 +71,20 @@
 
 
 
-<?php include 'preparequete.php' ?>
+
 
 <?php
 
- //$requete = $bdd->query("SELECT * FROM film where");
+ //$requete = $bdd->query("SELECT * FROM film");
 
 //$requete = $bdd->query ("SELECT * FROM film, genre, acteur, realisateur, appartenir, realiser, soumettre  where genre.id_genre = film.id_film AND acteur.id_acteur = film.id_film AND realisateur.id_realisateur=film.id_film");
 
 
-$requete -> execute(array());
+
    // foreach($donnees as $donnees)
 //{
-  while  ($resultat = $requete->fetch())
-  {
+ // while  ($resultat = $requete->fetch())
+  //{
   ?>
     <!--//////////////////////////////  HEADER  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
    
@@ -153,31 +153,31 @@ $requete -> execute(array());
                 <a href="content.php?Id_film=1"><img class="effect " src="img/4.jpg" id="">
                     <p></p>
                 </a>
-                <a href="content.php?Id_film=2"><img class="effect " src="img/" id="science-fiction">
+                <a href="content.php?Id_film=2"><img class="effect " src="img/5.jpg" id="science-fiction">
                     <p></p>
                 </a>
-                <a href="content.php?Id_film=3"><img class="effect " src="img/" id="horreur">
+                <a href="content.php?Id_film=3"><img class="effect " src="img/10.jpg" id="horreur">
                     <p></p>
                 </a>
-                <a href="content.php?Id_film=4"><img class="effect " src="img/" id="action">
+                <a href="content.php?Id_film=4"><img class="effect " src="img/11.jpg" id="action">
                     <p></p>
                 </a>
-                <a href="content.php?Id_film=5"><img class="effect " src="img/" id="science-fiction">
+                <a href="content.php?Id_film=5"><img class="effect " src="img/6.jpg" id="science-fiction">
                     <p></p>
                 </a>
-                <a href="content.php?Id_film=6"><img class="effect " src="img/" id="horreur">
+                <a href="content.php?Id_film=6"><img class="effect " src="img/7.jpg" id="horreur">
                     <p></p>
                 </a>
-                <a href="content.php?Id_film=7"><img class="effect " src="img/" id="action">
+                <a href="content.php?Id_film=7"><img class="effect " src="img/3.jpg" id="action">
                     <p></p>
                 </a>
-                <a href="content.php?Id_film=8"><img class="effect " src="img/" id="science-fiction">
+                <a href="content.php?Id_film=8"><img class="effect " src="img/nicky_larson.jpg" id="science-fiction">
                     <p></p>
                 </a>
-                <a href="content.php?Id_film=9"><img class="effect " src="img/" id="horreur">
+                <a href="content.php?Id_film=9"><img class="effect " src="img/sonic.jpg" id="horreur">
                     <p></p>
                 </a>
-                <a href="content.php?Id_film=10"><img class="effect " src="img/" id="action">
+                <a href="content.php?Id_film=10"><img class="effect " src="img/2.jpg" id="action">
                     <p></p>
                 </a>
             </div>
@@ -185,8 +185,8 @@ $requete -> execute(array());
 
         <?php
    
-   }
-  $requete->closeCursor(); // Termine le traitement de la requête
+  // }
+ // $requete->closeCursor(); // Termine le traitement de la requête
 
 ?>
 <footer id="footer" class="page-footer font-small text-white mdb-color pt-4">

@@ -73,11 +73,11 @@
 
  
  
- <?php include 'preparequete.php' ?>
+
 
  <?php
-
- $reqallo -> execute(array());
+$requete = $bdd->query('SELECT * FROM film WHERE Id_film =.$_GET["Id_film"]');
+ 
   
 
  // foreach($requete as $requete)
@@ -89,7 +89,7 @@
   //$reponse = $bdd->query('SELECT * FROM film where $id_film = "id_film"');
 
     // On affiche chaque entrée une à une
-  while  ($resultat = $reqallo->fetch())
+  while  ($resultat = $requete->fetch())
  {
   ?>
   <main id="content">
