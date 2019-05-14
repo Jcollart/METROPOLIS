@@ -10,10 +10,10 @@
   <link href="https://fonts.googleapis.com/css?family=Poiret+One|Roboto+Condensed" rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>  
+  <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
   </script>
@@ -31,76 +31,64 @@
 
 <body>
   <header>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="index.php">ALLOCINE<strong>MET</strong></a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="index.php">ALLOCINE<strong>MET</strong></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="allo_films.php">FILMS <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="contact.php">INSCRIPTION</a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Plus
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="acteur.php">ACTEUR</a>
-          <a class="dropdown-item" href="realisateur.php">REALISATEUR</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="connexion.php">ADMINISTRATION</a>
-        </div>
-      </li>
-      
-    </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="recherche" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i style="font-size:1em" class="fas fa-search"></i></button>
-    </form>
-  </div>
-</nav>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="allo_films.php">FILMS <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.php">INSCRIPTION</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              Plus
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="acteur.php">ACTEUR</a>
+              <a class="dropdown-item" href="realisateur.php">REALISATEUR</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="connexion.php">ADMINISTRATION</a>
+            </div>
+          </li>
+
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" placeholder="recherche" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i style="font-size:1em"
+              class="fas fa-search"></i></button>
+        </form>
+      </div>
+    </nav>
   </header>
-  
-  
+
+
   <?php include ('connectionbdd.php') ?>
-   
-    
 
  
- 
-
-
- <?php
-$requete = $bdd->query('SELECT * FROM film WHERE Id_film =.$_GET["Id_film"]');
- 
-  
-
- // foreach($requete as $requete)
- // $id_film = $_GET['id_film'];
-//}
-// Termine le traitement de la requête
-  // On récupère tout le contenu de la table film
-  // $id_film = $_GET['id_film'];
-  //$reponse = $bdd->query('SELECT * FROM film where $id_film = "id_film"');
-
-    // On affiche chaque entrée une à une
-  while  ($resultat = $requete->fetch())
- {
-  ?>
   <main id="content">
 
     <!--  pour le titre -->
 
     <div class="hoofd">
       <div id="text_shadow">
+      <?php
+  $requete = $bdd->query('SELECT titre_film, date_sortie, synopsis, bande_anonce, image_film  FROM film WHERE id_film =.$_GET["id_film"]');
+   while ($resultat = $requete->fetch())
+  {
+  ?>
+
+
         <h1 class="text-uppercase"><?php echo $resultat['titre_film']; ?></h1>
       </div>
-        </div>
+    </div>
 
     <!-- pour l'image du film -->
     <div class="media shadow-lg p-3 mb-5 bg-light rounded">
@@ -108,11 +96,17 @@ $requete = $bdd->query('SELECT * FROM film WHERE Id_film =.$_GET["Id_film"]');
     </div>
 
     <!-- pour la description du film -->
-    <center><h5 class="mb-1"><strong>Description</strong></h5></center>
+    <center>
+      <h5 class="mb-1"><strong>Description</strong></h5>
+    </center>
     <p class="text-center bg-light"><?php echo $resultat['synopsis']; ?>
     </p>
-   
 
+    <?php
+   
+  }
+$requete->closeCursor() // Termine le traitement de la requête
+?>
     <!-- pour la partie récap d'infos et la bande annonce -->
 
     <div class="row">
@@ -120,38 +114,97 @@ $requete = $bdd->query('SELECT * FROM film WHERE Id_film =.$_GET["Id_film"]');
       <div class="col-10 col-sm-10 col-md-10 col-lg-4 col-xl-5">
 
         <div class="list-group">
-          <a href="realisateur.php" class="list-group-item list-group-item-action">
-            <div class="d-flex w-100 justify-content-between">
-              <h5 class="mb-1"><strong>Realisateur</strong></h5>
-            </div>
-            <p class="mb-1"><?php echo $resultat['nom_realisateur']; ?></p>
+
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1"><strong>Realisateur</strong></h5>
+          </div>
+          <!--On appelle les données "id_acteur"et "nom_acteur" depuis les tables "film", "appartenir" et "acteur"-->
+          <?php
+
+
+$reqreal = $bdd->query('SELECT * FROM film, realiser, realisateur WHERE film.id_Film=realiser.id_Film AND realiser.id_realisateur=realisateur.id_realiser AND id_Film='.$_GET["id_film"] );
+
+while ($donnees = $reqreal->fetch())
+{
+?>
+          <a href="realisateur.php?id_realisateur=<?php echo $donnees['id_realisateur']; ?>"
+            class="list-group-item list-group-item-action">
+            <p class="mb-1"><?php echo $donnees['nom_realisateur']; ?><br></p>
           </a>
+
+          <?php
+   
+  }
+$reqreal->closeCursor(); // Termine le traitement de la requête
+?>
+
           <a href="#" class="list-group-item list-group-item-action">
             <div class="d-flex w-100 justify-content-between">
               <h5 class="mb-1"><strong>Genre</strong></h5>
             </div>
-              <p class="mb-1"><?php echo $resultat['type']; ?></p>
+            <p class="mb-1"></p>
           </a>
           <a href="#" class="list-group-item list-group-item-action">
             <div class="d-flex w-100 justify-content-between">
               <h5 class="mb-1"><strong>Date Sortie</strong></h5>
             </div>
-              <p class="mb-1"><?php echo $resultat['date_sortie']; ?></p>
-          </a>
-  
-          <a href="acteur.php" class="list-group-item list-group-item-action">
-            <div class="d-flex w-100 justify-content-between">
-              <h5 class="mb-1"><strong>Acteurs/trice</strong></h5>
-            </div>
-            <p class="mb-1"><?php echo $resultat['nom_acteur']; ?></p>
+            <?php
 
+$requete = $bdd->query('SELECT * FROM film WHERE id_film ='.$_GET["id_film"]);
+
+
+while ($resultat = $requete->fetch())
+{
+?>
+            <p class="mb-1"><?php echo $resultat['date_sortie']; ?></p>
           </a>
+          <?php
+        }
+$requete->closeCursor(); // Termine le traitement de la requête
+?>
+
+
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">Acteurs</h5>
+          </div>
+          <!--On appelle les données "id_acteur"et "nom_acteur" depuis les tables "film", "appartenir" et "acteur"-->
+          <?php
+
+
+$reqacteur = $bdd->query('SELECT * FROM film, appartenir, acteur WHERE film.id_Film=appartenir.id_Film AND appartenir.id_Acteur=acteur.id_Acteur AND id_Film='.$_GET["id_film"] );
+
+while ($donnees = $reqacteur->fetch())
+{
+?>
+          <a href="acteur.php?id_acteur=<?php echo $donnees['id_acteur']; ?>"
+            class="list-group-item list-group-item-action">
+            <p class="mb-1"><?php echo $donnees['nom_acteur']; ?><br></p>
+          </a>
+
+          <?php
+   
+  }
+$reqacteur->closeCursor(); // Termine le traitement de la requête
+?>
         </div>
       </div>
 
       <div class="col-1 col-sm-3 col-md-3 col-lg-1 col-xl-1"></div>
       <div class="col-8 col-sm-8 col-md-8 col-lg-4 col-xl-4">
+        <?php
+      $requete = $bdd->query('SELECT * FROM film WHERE id_film ='.$_GET["id_film"]);
+
+
+while ($resultat = $requete->fetch())
+{
+?>
         <?php echo $resultat['bande_annonce']; ?></div>
+
+      <?php
+   
+  }
+$requete->closeCursor(); // Termine le traitement de la requête
+?>
 
       <div class="col-2 col-sm-2 col-md-2 col-lg-1 col-xl-1"></div>
 
@@ -159,14 +212,9 @@ $requete = $bdd->query('SELECT * FROM film WHERE Id_film =.$_GET["Id_film"]');
 
 
   </main>
-<?php
-  }
- 
- $requete->closeCursor(); // Termine le traitement de la requête
 
-?>
 
-<footer id="footer" class="page-footer font-small text-white mdb-color pt-4">
+  <footer id="footer" class="page-footer font-small text-white mdb-color pt-4">
 
     <!-- Footer Links -->
     <div class="container text-center text-md-left ">
@@ -192,7 +240,7 @@ $requete = $bdd->query('SELECT * FROM film WHERE Id_film =.$_GET["Id_film"]');
         <!-- Grid column -->
 
       </div>
-      
+
       <!-- Grid row -->
       <div class="row d-flex align-items-center">
 
