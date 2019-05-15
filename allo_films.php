@@ -79,6 +79,10 @@
 
   </div>
 
+<?php
+$reqallo = $bdd->query('SELECT * FROM film');
+
+  ?>
 
   <!--//////////////////////////////  LISTE GAUCHE  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
 
@@ -109,7 +113,7 @@
         <ul id="menu-accordeon">
           <input type="search" id="site-search" name="q" aria-label="Search through site content">
           <button>Rechercher</button>
-          <li><a href="content.php?Id_film=?" class="collapsible">Films</a>
+          <li><a href="" class="collapsible">Films</a>
             <ul>
               <li><a href="#" class="collapsible">Action</a>
 
@@ -138,25 +142,23 @@
         <div class="titre">
           <h1><strong>FILMS</strong></h1>
         </div><br />
+       <?php
 
-        <?php
-        $reqallo = $bdd->query("SELECT * FROM film");
-        while  ($resultat = $reqallo->fetch())
-        {
-         ?>
-        <a href="content.php?id_film=?"><img class="effect " src="img/<?php echo $resultat['image_film']; ?>" id="">
-          <p><?php echo $resultat['titre_film']; ?></p>
+        while ($donnees = $reqallo->fetch())
+{
+    ?>    
+        <a href="content.php?id_film=<?php echo $donnees['id_film']; ?>"><img class="effect " src="img/<?php echo $donnees['image_film']; ?>" id="">
+          <p></p>
         </a>
-        <?php
-   
-  }
-$reqallo->closeCursor(); // Termine le traitement de la requête
-?>
+        
       </div>
     </div>
 
+ <?php
+}
+$reqallo->closeCursor(); // termine le traitement de la requete 
 
-
+?>
 
     <footer id="footer" class="page-footer font-small text-white mdb-color pt-4">
 

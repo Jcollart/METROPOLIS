@@ -70,43 +70,54 @@
   </header>
 
 
-  <?php include ('connectionbdd.php') ?>
+ 
 
  
   <main id="content">
-
+  <?php include ('connectionbdd.php') ?>
     <!--  pour le titre -->
 
     <div class="hoofd">
       <div id="text_shadow">
-      <?php
-  $requete = $bdd->query('SELECT titre_film, date_sortie, synopsis, bande_anonce, image_film  FROM film WHERE id_film =.$_GET["id_film"]');
-   while ($resultat = $requete->fetch())
-  {
-  ?>
+
+      <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">Acteurs</h5>
+          </div>
+          <!--On appelle les données "id_acteur"et "nom_acteur" depuis les tables "film", "appartenir" et "acteur"-->
+          <?php
+if(isset($_GET['id_film'])){
+$acteur = $bdd->query('SELECT * FROM film, appartenir, acteur WHERE id_film ='.$_GET['id_film'].'  AND  film.id_film= appartenir.id_film AND appartenir.id_acteur= acteur.id_acteur');
+
+while ($donnees = $acteur->fetch())
+{
+?>
+          <a href="acteur.php?id_film=<?php echo $donnees['id_film'];?>"
+            class="list-group-item list-group-item-action">
+            <p class="mb-1"><?php echo $donnees['nom_acteur']; ?><br></p>
+          </a>
+          <?php
+}}
+$acteur->closeCursor(); // termine le traitement de la requete ID_ACTEUR + NOM_ACTEUR
+?>
 
 
-        <h1 class="text-uppercase"><?php echo $resultat['titre_film']; ?></h1>
+
+        <h1 class="text-uppercase"></h1>
       </div>
     </div>
 
     <!-- pour l'image du film -->
     <div class="media shadow-lg p-3 mb-5 bg-light rounded">
-      <img src="img/<?php echo $resultat['image_film']; ?>" width="400px" height="370px" class="mr-3" alt="">
+      <img src="img/" width="400px" height="370px" class="mr-3" alt="">
     </div>
 
     <!-- pour la description du film -->
     <center>
       <h5 class="mb-1"><strong>Description</strong></h5>
     </center>
-    <p class="text-center bg-light"><?php echo $resultat['synopsis']; ?>
-    </p>
+    <p class="text-center bg-light">    </p>
 
-    <?php
-   
-  }
-$requete->closeCursor() // Termine le traitement de la requête
-?>
+    
     <!-- pour la partie récap d'infos et la bande annonce -->
 
     <div class="row">
@@ -118,25 +129,13 @@ $requete->closeCursor() // Termine le traitement de la requête
           <div class="d-flex w-100 justify-content-between">
             <h5 class="mb-1"><strong>Realisateur</strong></h5>
           </div>
-          <!--On appelle les données "id_acteur"et "nom_acteur" depuis les tables "film", "appartenir" et "acteur"-->
-          <?php
-
-
-$reqreal = $bdd->query('SELECT * FROM film, realiser, realisateur WHERE film.id_Film=realiser.id_Film AND realiser.id_realisateur=realisateur.id_realiser AND id_Film='.$_GET["id_film"] );
-
-while ($donnees = $reqreal->fetch())
-{
-?>
-          <a href="realisateur.php?id_realisateur=<?php echo $donnees['id_realisateur']; ?>"
+          
+          <a href="realisateur.php"
             class="list-group-item list-group-item-action">
-            <p class="mb-1"><?php echo $donnees['nom_realisateur']; ?><br></p>
+            <p class="mb-1"><br></p>
           </a>
 
-          <?php
-   
-  }
-$reqreal->closeCursor(); // Termine le traitement de la requête
-?>
+ 
 
           <a href="#" class="list-group-item list-group-item-action">
             <div class="d-flex w-100 justify-content-between">
@@ -148,63 +147,31 @@ $reqreal->closeCursor(); // Termine le traitement de la requête
             <div class="d-flex w-100 justify-content-between">
               <h5 class="mb-1"><strong>Date Sortie</strong></h5>
             </div>
-            <?php
 
-$requete = $bdd->query('SELECT * FROM film WHERE id_film ='.$_GET["id_film"]);
+           
 
 
-while ($resultat = $requete->fetch())
-{
-?>
-            <p class="mb-1"><?php echo $resultat['date_sortie']; ?></p>
+            <p class="mb-1"></p>
           </a>
-          <?php
-        }
-$requete->closeCursor(); // Termine le traitement de la requête
-?>
+          
 
 
           <div class="d-flex w-100 justify-content-between">
             <h5 class="mb-1">Acteurs</h5>
           </div>
-          <!--On appelle les données "id_acteur"et "nom_acteur" depuis les tables "film", "appartenir" et "acteur"-->
-          <?php
-
-
-$reqacteur = $bdd->query('SELECT * FROM film, appartenir, acteur WHERE film.id_Film=appartenir.id_Film AND appartenir.id_Acteur=acteur.id_Acteur AND id_Film='.$_GET["id_film"] );
-
-while ($donnees = $reqacteur->fetch())
-{
-?>
-          <a href="acteur.php?id_acteur=<?php echo $donnees['id_acteur']; ?>"
+          
+          <a href=""
             class="list-group-item list-group-item-action">
-            <p class="mb-1"><?php echo $donnees['nom_acteur']; ?><br></p>
+            <p class="mb-1"><br></p>
           </a>
 
-          <?php
-   
-  }
-$reqacteur->closeCursor(); // Termine le traitement de la requête
-?>
         </div>
       </div>
 
       <div class="col-1 col-sm-3 col-md-3 col-lg-1 col-xl-1"></div>
-      <div class="col-8 col-sm-8 col-md-8 col-lg-4 col-xl-4">
-        <?php
-      $requete = $bdd->query('SELECT * FROM film WHERE id_film ='.$_GET["id_film"]);
+      <div class="col-8 col-sm-8 col-md-8 col-lg-4 col-xl-4"></div>
 
-
-while ($resultat = $requete->fetch())
-{
-?>
-        <?php echo $resultat['bande_annonce']; ?></div>
-
-      <?php
-   
-  }
-$requete->closeCursor(); // Termine le traitement de la requête
-?>
+     
 
       <div class="col-2 col-sm-2 col-md-2 col-lg-1 col-xl-1"></div>
 
