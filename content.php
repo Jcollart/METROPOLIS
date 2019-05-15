@@ -69,116 +69,234 @@
     </nav>
   </header>
 
-
- 
-
- 
-  <main id="content">
   <?php include ('connectionbdd.php') ?>
+
+
+
+  <main id="content">
+    
+
     <!--  pour le titre -->
 
     <div class="hoofd">
-      <div id="text_shadow">
+      <?php
+    $requete = $bdd->prepare('SELECT * FROM film ');
+    $requete->execute();
+    while ($donnees = $requete->fetch())
+    {
 
-      <div class="d-flex w-100 justify-content-between">
-            <h5 class="mb-1">Acteurs</h5>
-          </div>
-          <!--On appelle les données "id_acteur"et "nom_acteur" depuis les tables "film", "appartenir" et "acteur"-->
-          <?php
-if(isset($_GET['id_film'])){
-$acteur = $bdd->query('SELECT * FROM film, appartenir, acteur WHERE id_film ='.$_GET['id_film'].'  AND  film.id_film= appartenir.id_film AND appartenir.id_acteur= acteur.id_acteur');
-
-while ($donnees = $acteur->fetch())
-{
-?>
-          <a href="acteur.php?id_film=<?php echo $donnees['id_film'];?>"
-            class="list-group-item list-group-item-action">
-            <p class="mb-1"><?php echo $donnees['nom_acteur']; ?><br></p>
-          </a>
-          <?php
-}}
-$acteur->closeCursor(); // termine le traitement de la requete ID_ACTEUR + NOM_ACTEUR
-?>
-
-
-
-        <h1 class="text-uppercase"></h1>
+    ?>
+      <h1 class="text-uppercase"><?php echo $donnees['titre_film'];?></h1>
+      <div class="fleches_2">
+        <img class="fleche_g animated fadeInLeft" src="img/ligne_g.png">
+        <img class="fleche_d animated fadeInRight" src="img/ligne_d.png">
       </div>
     </div>
 
     <!-- pour l'image du film -->
     <div class="media shadow-lg p-3 mb-5 bg-light rounded">
-      <img src="img/" width="400px" height="370px" class="mr-3" alt="">
+      <img src="img/<?php echo $donnees['image_film']; ?>" width="400px" height="370px" class="mr-3" alt="">
     </div>
 
     <!-- pour la description du film -->
     <center>
-      <h5 class="mb-1"><strong>Description</strong></h5>
+      <h5 class="mb-1"><strong>SYNOPSIS</strong></h5>
     </center>
-    <p class="text-center bg-light">    </p>
+    <p class="text-center bg-light"><?php echo $donnees['synopsis']; ?></p>
 
-    
+    <?php
+}
+$requete->closeCursor(); // termine le traitement de la requete ID_ACTEUR + NOM_ACTEUR
+?>
     <!-- pour la partie récap d'infos et la bande annonce -->
 
     <div class="row">
       <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1"></div>
-      <div class="col-10 col-sm-10 col-md-10 col-lg-4 col-xl-5">
+        <div class="col-10 col-sm-10 col-md-10 col-lg-4 col-xl-5">
 
-        <div class="list-group">
+          <div class="list-group">
+            <?php
 
-          <div class="d-flex w-100 justify-content-between">
-            <h5 class="mb-1"><strong>Realisateur</strong></h5>
+             $reqrealisateur=$bdd->prepare('SELECT * FROM film, realise, realisateur WHERE film.id_film= realise.id_film AND realise.id_realisateur= realisateur.id_realisateur AND id_film ='.$_GET['id']);
+             $reqrealisateur->execute();
+             $donnees = $reqrealisateur->fetch()
+
+            ?>
+              <a href="realisateur.php?id=<?php echo $donnees['id_realisateur'];?>"
+                class="list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-between">
+                  <h5 class="mb-1">REALISATEUR</h5>
+                </div>
+                 <p class="mb-1"><?php echo $donnees['nom_realisateur']; ?><br></p>
+              </a>
+            <?php
+             $reqrealisateur->closeCursor(); // termine le traitement de la requete 
+            ?>
+              <a href="#" class="list-group-item list-group-item-action">
+               <div class="d-flex w-100 justify-content-between">
+                 <h5 class="mb-1">GENRE</h5>
+               </div>
+               <p class="mb-1"></p>
+              </a>
+
+              <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">ACTEURS</h5>
+
+            <!--On appelle les données "id_acteur"et "nom_acteur" depuis les tables "film", "appartenir" et "acteur"-->
+
+            <?php
+              $reqacteur=$bdd->prepare('SELECT * FROM film, appartenir, acteur WHERE film.id_film= appartenir.id_film AND appartenir.id_acteur= acteur.id_acteur AND id_film ='.$_GET['id']);
+              $reqacteur->execute();
+              while ($donnees = $reqacteur->fetch())
+              {
+            ?>
+              <a href="acteur.php?id_acteur=<?php echo $donnees['id_acteur'];?>"
+                class="list-group-item list-group-item-action">
+                <p class="mb-1"><?php echo $donnees['nom_acteur']; ?><br></p>
+              </a>
+            <?php
+              }
+              $reqacteur->closeCursor(); // termine le traitement de la requete ID_ACTEUR + NOM_ACTEUR
+            ?>
           </div>
-          
-          <a href="realisateur.php"
-            class="list-group-item list-group-item-action">
-            <p class="mb-1"><br></p>
-          </a>
-
- 
-
-          <a href="#" class="list-group-item list-group-item-action">
-            <div class="d-flex w-100 justify-content-between">
-              <h5 class="mb-1"><strong>Genre</strong></h5>
-            </div>
-            <p class="mb-1"></p>
-          </a>
-          <a href="#" class="list-group-item list-group-item-action">
-            <div class="d-flex w-100 justify-content-between">
-              <h5 class="mb-1"><strong>Date Sortie</strong></h5>
-            </div>
-
-           
-
-
-            <p class="mb-1"></p>
-          </a>
-          
-
-
-          <div class="d-flex w-100 justify-content-between">
-            <h5 class="mb-1">Acteurs</h5>
-          </div>
-          
-          <a href=""
-            class="list-group-item list-group-item-action">
-            <p class="mb-1"><br></p>
-          </a>
 
         </div>
       </div>
 
       <div class="col-1 col-sm-3 col-md-3 col-lg-1 col-xl-1"></div>
-      <div class="col-8 col-sm-8 col-md-8 col-lg-4 col-xl-4"></div>
-
-     
+      <div class="col-8 col-sm-8 col-md-8 col-lg-4 col-xl-4">
+        <iframe class="shadow-lg p-3 mb-5 bg-light rounded" src="" height="250px" width="450px"></iframe>
+      </div>
 
       <div class="col-2 col-sm-2 col-md-2 col-lg-1 col-xl-1"></div>
 
     </div>
 
+    
+
+
+        <h1 class="text-uppercase"></h1>
+      </div>
+    </div>
+    
+    </div>
+
 
   </main>
+
+
+
+
+
+
+
+  <main id="content">
+<?php
+    $requete = $bdd->prepare('SELECT * FROM film ');
+    $requete->execute();
+    while ($donnees = $requete->fetch())
+    {
+?>
+
+
+<!--  pour le titre -->
+
+<div class="hoofd">
+  <div id="text_shadow">
+    <h1 class="text-uppercase"><?php echo $donnees['titre_film']; ?></h1>
+  </div>
+    </div>
+
+<!-- pour l'image du film -->
+<div class="media shadow-lg p-3 mb-5 bg-light rounded">
+  <img src="img/<?php echo $donnees['image_film']; ?>" width="400px" height="370px" class="mr-3" alt="">
+</div>
+
+<!-- pour la description du film -->
+<center><h5 class="mb-1"><strong>SYNOPSIS</strong></h5></center>
+<p class="text-center bg-light"><?php echo $donnees['synopsis']; ?>
+</p>
+
+<?php
+}
+$requete->closeCursor(); // termine le traitement de la requete titre, image et synopsis film
+?>
+<!-- pour la partie récap d'infos et la bande annonce -->
+<?php
+
+$reqrealisateur=$bdd->prepare('SELECT * FROM film, realise, realisateur WHERE film.id_film= realise.id_film AND realise.id_realisateur= realisateur.id_realisateur AND id_film ='.$_GET['id']);
+$reqrealisateur->execute();
+$donnees = $reqrealisateur->fetch()
+
+?>
+<div class="row">
+  <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1"></div>
+  <div class="col-10 col-sm-10 col-md-10 col-lg-4 col-xl-5">
+
+    <div class="list-group">
+      <a href="realisateur.php" class="list-group-item list-group-item-action">
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-1"><strong>REALISATEUR</strong></h5>
+        </div>
+        <p class="mb-1"><?php echo $donnees['nom_realisateur']; ?></p>
+      </a>
+
+
+      <a href="#" class="list-group-item list-group-item-action">
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-1"><strong>Genre</strong></h5>
+        </div>
+          <p class="mb-1"><?php echo $resultat['type']; ?></p>
+      </a>
+      <a href="#" class="list-group-item list-group-item-action">
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-1"><strong>Date Sortie</strong></h5>
+        </div>
+          <p class="mb-1"><?php echo $resultat['date_sortie']; ?></p>
+      </a>
+
+      <a href="acteur.php" class="list-group-item list-group-item-action">
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-1"><strong>Acteurs/trice</strong></h5>
+        </div>
+        <p class="mb-1"><?php echo $resultat['nom_acteur']; ?></p>
+
+      </a>
+    </div>
+  </div>
+
+  <div class="col-1 col-sm-3 col-md-3 col-lg-1 col-xl-1"></div>
+  <div class="col-8 col-sm-8 col-md-8 col-lg-4 col-xl-4">
+    <?php echo $resultat['bande_annonce']; ?></div>
+
+  <div class="col-2 col-sm-2 col-md-2 col-lg-1 col-xl-1"></div>
+
+</div>
+
+
+</main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   <footer id="footer" class="page-footer font-small text-white mdb-color pt-4">
