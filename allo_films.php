@@ -88,20 +88,25 @@
         <ul id="menu-accordeon">
           <input type="search" id="site-search" name="q" aria-label="Search through site content">
           <button><i style="font-size:1em" class="fas fa-search"></i></button>
-
+          <?php
+$reqgenre=$bdd->prepare('SELECT * FROM genre, film, soumettre WHERE film.id_film=soumettre.id_film AND soumettre.id_genre=genre.id_genre AND film.id_film=genre.id_genre');
+$reqgenre->execute();
+$donnees=$reqgenre->fetch()
+?>
           <li><a href="#" class="collapsible">Choix Films</a>
             <ul>
-              <li><a href="#">Action</a></li>
-              <li><a href="#">Fantastique</a></li>
-              <li><a href="#">Animation</a></li>
-              <li><a href="#">Comedie</a></li>
-              <li><a href="#">Tous les films</a></li>
+              <li><a href="allo_film.php?id=<?php echo $donnees['type']; ?>">Action</a></li>
+              <li><a href="allo_film.php?id=<?php echo $donnees['type']; ?>">Fantastique</a></li>
+              <li><a href="content.php?id=<?php echo $donnees['type']; ?>">Animation</a></li>
+              <li><a href="content.php?id=<?php echo $donnees['type']; ?>">Comedie</a></li>
+              <li><a href="content.php?id=<?php echo $donnees['type']; ?>">Tous les films</a></li>
             </ul>
           </li>
-
         </ul>
       </div>
-
+      <?php
+$reqgenre->closeCursor(); // termine le traitement de la requete 
+?>
       <!--//////////////////////////////  LISTE GAUCHE POUR SMARTPHONE  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
 
       <div class="menu_films_portable">
