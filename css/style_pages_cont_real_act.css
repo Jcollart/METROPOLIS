@@ -56,6 +56,9 @@
   color: grey;
 }
 
+hr {
+  border: 3px red ridge;
+}
 
 
 #acteur h1{

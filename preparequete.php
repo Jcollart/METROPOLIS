@@ -1,9 +1,9 @@
 <?php
-$reqall = $bdd->prepare('SELECT * FROM film WHERE id_film ='.$_GET['id']);
+
 
 $requete = $bdd->prepare('SELECT * FROM film WHERE id_film ='.$_GET['id']);
 
-$reqrealisateur=$bdd->prepare('SELECT * FROM film, realise, realisateur WHERE film.id_film= realise.id_film AND realise.id_realisateur= realisateur.id_realisateur AND film.id_film=realisateur.id_realisateur AND id_film ='.$_GET['id']);
+$reqrealisateur=$bdd->prepare('SELECT nom_realisateur FROM film, realise, realisateur WHERE film.id_film= realise.id_film AND realise.id_realisateur= realisateur.id_realisateur AND film.id_film=realisateur.id_realisateur');
 
 $reqgenre=$bdd->prepare('SELECT * FROM genre, film, soumettre WHERE film.id_film=soumettre.id_film AND soumettre.id_genre=genre.id_genre AND film.id_film=genre.id_genre AND id_film ='.$_GET['id']);
 
@@ -15,6 +15,6 @@ VALUES ("$Id", "$titre", "$realisateur", "$acteur", "$Datesortie", "$image", "$s
 $reqmodif = $bdd->prepare('UPDATE `film` SET `id`=[value-1],`titre`=[value-2],`realisateur`=[value-3],`acteur`=[value-4],`Date`=[value-5],`image`=[value-6],`synopsis`=[value-7],`bo`=[value-8]
                           WHERE 1') ;
 
-$reqsup = $bdd->prepare('DELETE FROM `film` WHERE 1') ;
+$reqsup = $bdd->prepare('DELETE id_film FROM `film` WHERE 1') ;
 
 ?>

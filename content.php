@@ -70,148 +70,129 @@
   </header>
 
   <?php include ('connectionbdd.php') ?>
-<?php include ('preparequete.php') ?>
-  <main id="content">
-    <?php
- 
- $reqall->execute();
- while ($donnees = $reqall->fetch())
- {
-?>
+
+<main id="content">
+
     <!--  pour le titre -->
     <div class="hoofd">
-      <div id="text_shadow">
-        <?php
-    
-    $requete->execute();
-    while ($donnees = $requete->fetch())
-    {
-?>
-        <h1 class="text-uppercase"><?php echo $donnees['titre_film']; ?></h1>
-      </div>
+      <?php
+        $requete = $bdd->prepare('SELECT * FROM film WHERE id_film ='.$_GET['id']);
+        $requete->execute();
+        while ($donnees = $requete->fetch())
+        {
+      ?>
+      <h1 class="text-uppercase"><?php echo $donnees['titre_film']; ?></h1>
+       <hr>
     </div>
+
     <!-- pour l'image du film -->
+
     <div class="media shadow-lg p-3 mb-5 bg-light rounded">
       <img src="img/<?php echo $donnees['image_film']; ?>" width="400px" height="370px" class="mr-3" alt="">
     </div>
+
     <!-- pour la description du film -->
-    <center>
-      <h5 class="mb-1"><strong>SYNOPSIS</strong></h5>
-    </center>
-    <p class="text-center bg-light"><?php echo $donnees['synopsis']; ?>
-    </p>
-    <?php
-}
-$requete->closeCursor(); // termine le traitement de la requete titre, image et synopsis film
-?>
-    <!-- pour la partie récap d'infos et la bande annonce -->
-    <?php
 
-$reqrealisateur->execute();
-$donnees = $reqrealisateur->fetch()
-?>
-    <div class="row">
-      <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1"></div>
+    <center><h5 class="mb-1"><strong>SYNOPSIS</strong></h5></center>
+    <p class="text-center bg-light"><?php echo $donnees['synopsis']; ?></p>
+      <?php
+      }
+      $requete->closeCursor(); // termine le traitement de la requete 
+      ?>
+
+    <!-- pour la partie réalisateur, acteur, genre date de sortie et acteur et la bande annonce -->
+
+
+  <div class="row">
+    <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1"></div>
       <div class="col-10 col-sm-10 col-md-10 col-lg-4 col-xl-5">
-        <div class="list-group">
+           <?php
+           $reqrealisateur=$bdd->prepare('SELECT nom_realisateur FROM film, realise, realisateur WHERE film.id_film= realise.id_film AND realise.id_realisateur= realisateur.id_realisateur AND film.id_film=realisateur.id_realisateur');
+           $reqrealisateur->execute();
+           while ($donnees = $reqrealisateur->fetch())
+          {
+          ?>
+         <div class="list-group">
           <a href="realisateur.php" class="list-group-item list-group-item-action">
-            <div class="d-flex w-100 justify-content-between">
-              <h5 class="mb-1"><strong>REALISATEUR</strong></h5>
-            </div>
-            <p class="mb-1"><?php echo $donnees['nom_realisateur']; ?></p>
+           <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1"><strong>REALISATEUR</strong></h5>
+           </div>
+             <p class="mb-1"><?php echo $donnees['nom_realisateur']; ?></p>
           </a>
-          <?php
-$reqrealisateur->closeCursor(); // termine le traitement de la requete 
-?>
-          <?php
+           <?php
+           }
+           $reqrealisateur->closeCursor(); // termine le traitement de la requete 
+           ?>
 
-$reqgenre->execute();
-$donnees=$reqgenre->fetch()
-?>
+           <?php
+           $reqgenre=$bdd->prepare('SELECT * FROM genre, film, soumettre WHERE film.id_film=soumettre.id_film AND soumettre.id_genre=genre.id_genre AND id_film ='.$_GET['id']);
+           $reqgenre->execute();
+           while ($donnees=$reqgenre->fetch())
+           {
+           ?>
           <a href="#" class="list-group-item list-group-item-action">
-            <div class="d-flex w-100 justify-content-between">
-              <h5 class="mb-1"><strong>GENRE</strong></h5>
-            </div>
+           <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1"><strong>GENRE</strong></h5>
+           </div>
             <p class="mb-1"><?php echo $donnees['type']; ?></p>
           </a>
-          <?php
-$reqgenre->closeCursor(); // termine le traitement de la requete 
-?>
-          <?php
-    
-    $requete->execute();
-    while ($donnees = $requete->fetch())
-    {
-?>
+            <?php
+            }
+            $reqgenre->closeCursor(); // termine le traitement de la requete 
+            ?>
+
+            <?php
+            $requete = $bdd->prepare('SELECT * FROM film WHERE id_film ='.$_GET['id']);
+            $requete->execute();
+            while ($donnees = $requete->fetch())
+            {
+            ?>
           <a href="#" class="list-group-item list-group-item-action">
-            <div class="d-flex w-100 justify-content-between">
-              <h5 class="mb-1"><strong>DATE DE SORTIE</strong></h5>
-            </div>
+           <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1"><strong>DATE DE SORTIE</strong></h5>
+           </div>
             <p class="mb-1"><?php echo $donnees['date_sortie']; ?></p>
           </a>
-          <?php
-}
-$requete->closeCursor(); // termine le traitement de la requete titre, image et synopsis film
-?>
-          <?php
-             
-              $reqacteur->execute();
-              $donnees = $reqacteur->fetch()
+            <?php
+            }
+            $requete->closeCursor(); // termine le traitement de la requete 
+            ?>
+
+            <?php
+            $reqacteur=$bdd->prepare('SELECT nom_acteur FROM film, appartenir, acteur WHERE film.id_film = appartenir.id_film AND appartenir.id_acteur = acteur.id_acteur AND film.id_film = acteur.id_acteur');             
+            $reqacteur->execute();
+            while ($donnees = $reqacteur->fetch())
+            {
             ?>
           <a href="acteur.php" class="list-group-item list-group-item-action">
-            <div class="d-flex w-100 justify-content-between">
-              <h5 class="mb-1"><strong>ACTEUR/TRICE</strong></h5>
-              <p class="mb-1"><?php echo $donnees['nom_acteur']; ?></p>
-            </div>
+           <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1"><strong>ACTEUR/TRICE</strong></h5>
+           </div>
+            <p class="mb-1"><?php echo $donnees['nom_acteur']; ?></p>
           </a>
-          <?php
-$reqacteur->closeCursor(); // termine le traitement de la requete 
-?>
-        </div>
+            <?php
+            }
+            $reqacteur->closeCursor(); // termine le traitement de la requete 
+            ?>
       </div>
-      <?php
-    
-    $requete->execute();
-    while ($donnees = $requete->fetch())
-    {
-?>
+    </div>
+            <?php
+            $requete = $bdd->prepare('SELECT * FROM film WHERE id_film ='.$_GET['id']);
+            $requete->execute();
+            while ($donnees = $requete->fetch())
+            {
+            ?>
       <div class="col-1 col-sm-3 col-md-3 col-lg-1 col-xl-1"></div>
-      <div class="col-8 col-sm-8 col-md-8 col-lg-4 col-xl-4">
-        <?php echo $donnees['bande_annonce']; ?></div>
+      <div class="col-8 col-sm-8 col-md-8 col-lg-4 col-xl-4"><?php echo $donnees['bande_annonce']; ?></div>
+
+           <?php
+           }
+           $requete->closeCursor(); // termine le traitement de la requete 
+           ?>
 
       <div class="col-2 col-sm-2 col-md-2 col-lg-1 col-xl-1"></div>
-      <?php
- }
-$requete->closeCursor(); // termine le traitement de la requete 
-?>
-    </div>
-    <?php
-}
-$reqall->closeCursor(); // termine le traitement de la requete 
-?>
+  </div>
 </main>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
   <footer id="footer" class="page-footer font-small text-white mdb-color pt-4">

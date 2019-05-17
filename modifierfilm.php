@@ -4,7 +4,7 @@
 // On initialise les sessions
 session_start();
 // On commence par récupérer les champs
-if(isset($_POST['Id_film']))      $id=$_POST['Id_film'];
+if(isset($_POST['id_film']))      $id=$_POST['id_film'];
 else      $id="";
 
 if(isset($_POST['titre_film']))      $titre=$_POST['titre_film'];

@@ -71,14 +71,14 @@
     </nav>
   </header>
   <?php include ('connectionbdd.php')?>
-
+  
  <!--//////////////////////////////  HEADER  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
-
+ 
   <div class="header_films">
     <h1>NOS FILMS</h1>
 
   </div>
-
+ 
 
   <!--//////////////////////////////  LISTE GAUCHE  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
 
@@ -88,25 +88,20 @@
         <ul id="menu-accordeon">
           <input type="search" id="site-search" name="q" aria-label="Search through site content">
           <button><i style="font-size:1em" class="fas fa-search"></i></button>
-          <?php
-$reqgenre=$bdd->prepare('SELECT * FROM genre, film, soumettre WHERE film.id_film=soumettre.id_film AND soumettre.id_genre=genre.id_genre AND film.id_film=genre.id_genre');
-$reqgenre->execute();
-$donnees=$reqgenre->fetch()
-?>
+          
+
           <li><a href="#" class="collapsible">Choix Films</a>
             <ul>
-              <li><a href="allo_film.php?id=<?php echo $donnees['type']; ?>">Action</a></li>
-              <li><a href="allo_film.php?id=<?php echo $donnees['type']; ?>">Fantastique</a></li>
-              <li><a href="content.php?id=<?php echo $donnees['type']; ?>">Animation</a></li>
-              <li><a href="content.php?id=<?php echo $donnees['type']; ?>">Comedie</a></li>
-              <li><a href="content.php?id=<?php echo $donnees['type']; ?>">Tous les films</a></li>
+              <li><a href="">Action</a></li>
+              <li><a href="">Fantastique</a></li>
+              <li><a href="">Animation</a></li>
+              <li><a href="">Comedie</a></li>
+              <li><a href="">Tous les films</a></li>
             </ul>
           </li>
         </ul>
       </div>
-      <?php
-$reqgenre->closeCursor(); // termine le traitement de la requete 
-?>
+     
       <!--//////////////////////////////  LISTE GAUCHE POUR SMARTPHONE  \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\-->
 
       <div class="menu_films_portable">
@@ -143,22 +138,21 @@ $reqgenre->closeCursor(); // termine le traitement de la requete
         <div class="titre">
           <h1><strong>FILMS</strong></h1>
         </div><br />
-
         <?php
-$reqallo = $bdd->query('SELECT * FROM film');
 
-  ?>
-       <?php
-
-        while ($donnees = $reqallo->fetch())
+$requete = $bdd->prepare('SELECT * FROM film ');
+$requete ->execute();
+       while ($donnees = $requete->fetch())
 {
-    ?>    
+   ?>    
+
         <a href="content.php?id=<?php echo $donnees['id_film']; ?>"><img class="effect " src="img/<?php echo $donnees['image_film']; ?>" id="">
           <p></p>
         </a>
         <?php
 }
-$reqallo->closeCursor(); // termine le traitement de la requete 
+
+$requete->closeCursor(); // termine le traitement de la requete 
 
 ?>
       </div>

@@ -6,7 +6,10 @@ body, html {
   height:100vh;
   object-fit: cover;
 } 
-
+p {
+  color: rgb(226, 17, 17);
+  font-family: 'Jazz LET, fantasy', cursive;
+}
 hr {
 	display: block;
 	clear: both;

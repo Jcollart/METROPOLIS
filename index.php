@@ -81,6 +81,10 @@
     </ol>
     <div class="carousel-inner">
       <div class="carousel-item active">
+      <div style="position:absolute; top:360px; left:480px; width:600px; height:480px; z-index:0;font-size:200% ">
+      <center><p>NICKY LARSON</p></center>
+      <center><p>Un film qui rappelera votre jeunesse</p></center>
+    </div> 
         <img src="img/nicky.jpg" class="d-block w-100" height="960px" alt="...">
         <div class="carousel-caption d-none d-md-block">
           <h1>NICKY LARSON</h1>
@@ -89,6 +93,7 @@
       </div>
       <div class="carousel-item">
         <img src="img/aladdin.jpg" class="d-block w-100" height="960px" alt="...">
+        
         <div class="carousel-caption d-none d-md-block">
           <h1>ALADDIN</h1>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
