@@ -99,9 +99,8 @@ $sessionAdmin = isset($_SESSION['admin'])? '<div id="admin"><h3>MODE ADMIN</h3>
     <form method="POST" action="ajoutfilm.php">
 <center>
 <input type="text" name="id_film" size="20" value="id_film" maxlength="35"><br><input type="text" name="titre_film" size="20" value="titre_film" maxlength="35"><br>
-<input type="text" name="nom_realisateur" size="20" value="nom_realisateur" maxlength="35"><br><input type="text" name="nom_acteur" size="20" value="nom_acteur" maxlength="70"><br>
 <input type="text" name="date_sortie" size="20" value="date_sortie" maxlength="11"><br><input type="text" name="image_film" size="20" value="image_film" maxlength="70"><br><input type="text" name="synopsis" size="20" value="synopsis" maxlength="255"><br>
-<input type="text" name="genre" size="20" value="genre" maxlength="35"><br><input type="text" name="bande_annonce" size="20" value="bande_annonce" maxlength="35"><br>
+<input type="text" name="bande_annonce" size="20" value="bande_annonce" maxlength="35"><br>
 <input type="submit" value="Envoyer" name="envoyer">
 </center>
 </form>

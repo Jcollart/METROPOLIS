@@ -1,5 +1,5 @@
 <?php include 'connectionbdd.php' ?>
-
+<?php include 'preparequete.php' ?>
 <?php
 
 // On initialise les sessions
@@ -39,7 +39,7 @@ else
     {
     
      // on écrit la requête sql
-     include 'preparequete.php'
+     
      // execute le traitement de la requête                     
      $reqsup->execute();
     }
