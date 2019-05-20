@@ -47,7 +47,7 @@ else
      $reqsup->closeCursor();
     echo 'Le film a bien été supprimé !';
    
-
+    header('Location: admin.php');
   ?>
 <form method="POST" action="admin.php">
     <input type="submit" name="mode admin" value="mode admin">

@@ -13,15 +13,16 @@ p {
 
 
 .affiche{
-  background-color: darkslategray;
-  height: 150px;
+  background-color: white;
+  height: 300px;
 }
  
 .parallax {
   /* The image used */
-  background-image: url('../img/metropolis.jpg');
-  background-color: darkslategray;
-  height: auto;
+  background-image: url('./img/metropolis.jpg');
+  
+  min-height: 450px;
+  background: transparent;
 
   /* Full height */
   height: 30%; 

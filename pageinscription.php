@@ -70,12 +70,11 @@
             if($valid){
 
                 $pass_ = crypt($mdp, "$6$rounds=5000$macleapersonnaliseretagardersecret$");
-                $date_creation_compte = date('Y-m-d H:i:s');
-
+                
                 // On insert nos données dans la table utilisateur
-                $DB->execute("INSERT INTO utilisateur (nom, prenom, mail, mdp, date_creation_compte) VALUES 
+                $DB->execute("INSERT INTO utilisateur (nom, prenom, mail, mdp) VALUES 
                     (?, ?, ?, ?, ?)", 
-                    array($nom, $prenom, $mail, $mdp, $date_creation_compte));
+                    array($nom, $prenom, $mail, $mdp));
 
                 header('Location: index.php');
                 exit;
