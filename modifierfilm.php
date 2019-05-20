@@ -29,7 +29,7 @@ if(isset($_POST['bande_annonce']))      $bo=$_POST['bande_annonce'];
 else      $bo="";
 
 // On vérifie si les champs sont vides
-if(empty($titre) OR empty($realisateur) OR empty($acteur) OR empty($datesortie) OR empty($image) OR empty($synopsis) OR empty($bo))
+if(empty($titre) OR empty($datesortie) OR empty($image) OR empty($synopsis) OR empty($bo))
     {
     }
 

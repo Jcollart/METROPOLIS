@@ -84,6 +84,7 @@ $requete ->execute();
    ?>    
 
   <div class="bd-example">
+<<<<<<< HEAD
     <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
 
       <div class="carousel-inner">
@@ -104,6 +105,32 @@ $requete ->execute();
 
           <img src="img/<?php echo $donnees['image_film']; ?>" class="d-block w-100" height="960px" alt="...">
 
+=======
+  <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+      <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+      <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+      <div style="position:absolute; top:360px; left:480px; width:600px; height:480px; z-index:0;font-size:200% ">
+      <center><p>NICKY LARSON</p></center>
+      <center><p>Un film qui vous rappelera votre jeunesse</p></center>
+    </div> 
+        <img src="img/nicky.jpg" class="d-block w-100" height="960px" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h1>NICKY LARSON</h1>
+          <p></p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="img/aladdin.jpg" class="d-block w-100" height="960px" alt="...">
+        
+        <div class="carousel-caption d-none d-md-block">
+          <h1>ALADDIN</h1>
+          <p></p>
+>>>>>>> 8bc6d4e2d757772de537974e1f7d2bdb0bf2d98a
         </div>
 
 
@@ -125,14 +152,23 @@ $requete ->execute();
       </a>
     </div>
   </div>
+<<<<<<< HEAD
 
   <div class="affiche" height="400px">
     <div class="container-titre mx-auto my-5 text-center">
       <h1>ACTUELLEMENT EN VOD</h1>
       <hr size="30px" style="background-color: red;">
+=======
+</div>
+  <div class="affiche" height="300px">
+  <div  class="container-titre mx-auto my-5 text-center">
+      <h1>ACTUELLEMENT EN VOD</h1>
+      <hr  size="30px" style="background-color: red;">
+>>>>>>> 8bc6d4e2d757772de537974e1f7d2bdb0bf2d98a
     </div>
 
     <MARQUEE scrollamount="8" onmouseover="this.stop()" onmouseout="this.start()">
+<<<<<<< HEAD
       <a href="content.php?ID=1"><img class="effect " src="img/<?php echo $donnees['image_film']; ?>" height="200px" width="160px" id="action"></a>
       <a href="content.php?ID=2"><img class="effect " src="img/<?php echo $donnees['image_film']; ?>" height="200px" width="160px" id="action"></a>
       <a href="content.php?ID=3"><img class="effect " src="img/<?php echo $donnees['image_film']; ?>" height="200px" width="160px" id="action"></a>
@@ -145,6 +181,19 @@ $requete ->execute();
       <a href="content.php?ID=9"><img class="effect " src="img/<?php echo $donnees['image_film']; ?>" height="200px" width="160px" id="action"></a>
       <a href="content.php?ID=10"><img class="effect " src="img/<?php echo $donnees['image_film']; ?>" height="200px" width="160px" id="action"></a>
     </MARQUEE>
+=======
+      <a href="content.php?id=1"><img class="effect " src="img/4.jpg" height="200px" width="160px" id="action"></a>
+      <a href="content.php?id=2"><img class="effect " src="img/5.jpg" height="200px" width="160px" id="action"></a>
+      <a href="content.php?id=3"><img class="effect " src="img/10.jpg" height="200px" width="160px" id="action"></a>
+      <a href="content.php?id=4"><img class="effect " src="img/11.jpg" height="200px" width="160px" id="action"></a>
+      <a href="content.php?id=5"><img class="effect " src="img/6.jpg" height="200px" width="160px" id="action"></a>
+      <a href="content.php?id=6"><img class="effect " src="img/7.jpg" height="200px" width="160px" id="action"></a>
+      <a href="content.php?id=7"><img class="effect " src="img/3.jpg" height="200px" width="160px" id="action"></a>
+      <a href="content.php?id=8"><img class="effect " src="img/nicky_larson.jpg" height="200px" width="160px" id="action"></a>
+      <a href="content.php?id=9"><img class="effect " src="img/sonic.jpg" height="200px" width="160px" id="action"></a>
+      <a href="content.php?id=10"><img class="effect " src="img/2.jpg" height="200px" width="160px" id="action"></a>
+      </MARQUEE>
+>>>>>>> 8bc6d4e2d757772de537974e1f7d2bdb0bf2d98a
   </div>
   </a>
         <?php
@@ -155,8 +204,13 @@ $requete->closeCursor(); // termine le traitement de la requete
 ?>
   <div class="parallax"></div>
 
+<<<<<<< HEAD
   <div style="height:700px;background-color:white;font-size:36px">
     <div class="container-titre mx-auto my-5 text-center">
+=======
+  <div style="height:500px;background-color:white;font-size:36px">
+    <div  class="container-titre mx-auto my-5 text-center">
+>>>>>>> 8bc6d4e2d757772de537974e1f7d2bdb0bf2d98a
       <h1>LE METROPOLIS</h1>
       <hr style="background-color: red;">
     </div>
@@ -166,6 +220,7 @@ $requete->closeCursor(); // termine le traitement de la requete
       </div>
       <div class="text-center container-fluid mx-auto ">
         <h2 class=" container-fluid mx-auto">Description</h2>
+<<<<<<< HEAD
         <p>Le Cinéma METROPOLIS est situé en centre-ville, à 300 mètres de la place Ducale, coeur historique de
           Charleville-Mézières.
           Le parking est gratuit tous les jours de 12h00 à 14h00 et après 18h30 jusqu'au lendemain 9h00.Il est
@@ -180,6 +235,13 @@ $requete->closeCursor(); // termine le traitement de la requete
             <li>Salles et hall d'accueil climatisés</li>
         </p>
         <p></p>
+=======
+        <p>Le Cinéma METROPOLIS est situé en centre-ville, à 300 mètres de la place Ducale, coeur historique de Charleville-Mézières.
+           Le parking est gratuit tous les jours de 12h00 à 14h00 et après 18h30 jusqu'au lendemain 9h00.Il est gratuit le dimanche toute la journée.
+</p>
+        <p>10 salles pour une capacité de 2.000 fauteuils, de 500 à 100 places</p>
+        <p>Restauration sur place</p>
+>>>>>>> 8bc6d4e2d757772de537974e1f7d2bdb0bf2d98a
         <div class="parallax"></div>
       </div>
     </div>

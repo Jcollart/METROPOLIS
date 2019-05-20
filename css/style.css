@@ -13,7 +13,11 @@ p {
 
 
 .affiche{
+<<<<<<< HEAD
   background-color: white;
+=======
+  background-color: darkslategray;
+>>>>>>> 8bc6d4e2d757772de537974e1f7d2bdb0bf2d98a
   height: 300px;
 }
  
