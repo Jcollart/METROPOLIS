@@ -83,12 +83,12 @@
       <div class="carousel-item active">
       <div style="position:absolute; top:360px; left:480px; width:600px; height:480px; z-index:0;font-size:200% ">
       <center><p>NICKY LARSON</p></center>
-      <center><p>Un film qui rappelera votre jeunesse</p></center>
+      <center><p>Un film qui vous rappelera votre jeunesse</p></center>
     </div> 
         <img src="img/nicky.jpg" class="d-block w-100" height="960px" alt="...">
         <div class="carousel-caption d-none d-md-block">
           <h1>NICKY LARSON</h1>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+          <p></p>
         </div>
       </div>
       <div class="carousel-item">
@@ -96,7 +96,7 @@
         
         <div class="carousel-caption d-none d-md-block">
           <h1>ALADDIN</h1>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <p></p>
         </div>
       </div>
       <div class="carousel-item">
@@ -119,27 +119,27 @@
 </div>
   <div class="affiche" height="300px">
   <div  class="container-titre mx-auto my-5 text-center">
-      <h1>A L'AFFICHE</h1>
+      <h1>ACTUELLEMENT EN VOD</h1>
       <hr  size="30px" style="background-color: red;">
     </div>
   
     <MARQUEE scrollamount="8" onmouseover="this.stop()" onmouseout="this.start()">
-      <a href="content.php?ID=1"><img class="effect " src="img/4.jpg" height="200px" width="160px" id="action"></a>
-      <a href="content.php?ID=2"><img class="effect " src="img/5.jpg" height="200px" width="160px" id="action"></a>
-      <a href="content.php?ID=3"><img class="effect " src="img/10.jpg" height="200px" width="160px" id="action"></a>
-      <a href="content.php?ID=4"><img class="effect " src="img/11.jpg" height="200px" width="160px" id="action"></a>
-      <a href="content.php?ID=5"><img class="effect " src="img/6.jpg" height="200px" width="160px" id="action"></a>
-      <a href="content.php?ID=6"><img class="effect " src="img/7.jpg" height="200px" width="160px" id="action"></a>
-      <a href="content.php?ID=7"><img class="effect " src="img/3.jpg" height="200px" width="160px" id="action"></a>
-      <a href="content.php?ID=8"><img class="effect " src="img/nicky_larson.jpg" height="200px" width="160px" id="action"></a>
-      <a href="content.php?ID=9"><img class="effect " src="img/sonic.jpg" height="200px" width="160px" id="action"></a>
-      <a href="content.php?ID=10"><img class="effect " src="img/2.jpg" height="200px" width="160px" id="action"></a>
+      <a href="content.php?id=1"><img class="effect " src="img/4.jpg" height="200px" width="160px" id="action"></a>
+      <a href="content.php?id=2"><img class="effect " src="img/5.jpg" height="200px" width="160px" id="action"></a>
+      <a href="content.php?id=3"><img class="effect " src="img/10.jpg" height="200px" width="160px" id="action"></a>
+      <a href="content.php?id=4"><img class="effect " src="img/11.jpg" height="200px" width="160px" id="action"></a>
+      <a href="content.php?id=5"><img class="effect " src="img/6.jpg" height="200px" width="160px" id="action"></a>
+      <a href="content.php?id=6"><img class="effect " src="img/7.jpg" height="200px" width="160px" id="action"></a>
+      <a href="content.php?id=7"><img class="effect " src="img/3.jpg" height="200px" width="160px" id="action"></a>
+      <a href="content.php?id=8"><img class="effect " src="img/nicky_larson.jpg" height="200px" width="160px" id="action"></a>
+      <a href="content.php?id=9"><img class="effect " src="img/sonic.jpg" height="200px" width="160px" id="action"></a>
+      <a href="content.php?id=10"><img class="effect " src="img/2.jpg" height="200px" width="160px" id="action"></a>
       </MARQUEE>
   </div>
 
   <div class="parallax"></div>
 
-  <div style="height:700px;background-color:white;font-size:36px">
+  <div style="height:500px;background-color:white;font-size:36px">
     <div  class="container-titre mx-auto my-5 text-center">
       <h1>LE METROPOLIS</h1>
       <hr  style="background-color: red;">
@@ -153,13 +153,8 @@
         <p>Le Cinéma METROPOLIS est situé en centre-ville, à 300 mètres de la place Ducale, coeur historique de Charleville-Mézières.
            Le parking est gratuit tous les jours de 12h00 à 14h00 et après 18h30 jusqu'au lendemain 9h00.Il est gratuit le dimanche toute la journée.
 </p>
-        <p>10 salles pour une capacité de 2.000 fauteuils, de 500 à 100 places
-        <ul>
-           <li>Projection numérique </li>
-           <li>Son "dolby" digital</li>
-           <li>Ecrans "mur à mur"</li>
-           <li>Salles et hall d'accueil climatisés</li></p>
-        <p></p>
+        <p>10 salles pour une capacité de 2.000 fauteuils, de 500 à 100 places</p>
+        <p>Restauration sur place</p>
         <div class="parallax"></div>
       </div>
     </div>
